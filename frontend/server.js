@@ -1,57 +1,27 @@
-'use strict';
-
-/**
- * Production server for ClearTrade frontend.
- * Serves Vite build output (dist/) as static files.
- * Manually proxies /api/* to backend using axios.
- *
- * Environment variables:
- *   PORT          - port to listen on (default: 4173)
- *   BACKEND_URL   - backend service URL (default: http://localhost:3001)
- */
-
 const express = require('express');
-const axios   = require('axios');
-const path    = require('path');
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const path = require('path');
 
-const app     = express();
-const PORT    = process.env.PORT || 4173;
-const BACKEND = (process.env.BACKEND_URL || 'http://localhost:3001').replace(/\/$/, '');
+const app = express();
+const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:3001';
 
-app.use(express.json());
+// Proxy API calls — pathRewrite adds /api back since Express strips it
+app.use('/api', createProxyMiddleware({
+  target: BACKEND_URL,
+  changeOrigin: true,
+  pathRewrite: { '^/': '/api/' }
+}));
 
-// Proxy /api/* → backend
-// NOTE: req.path is stripped (e.g. /health from /api/health)
-// so we reconstruct the full /api/xxx path manually
-app.all('/api/*', async (req, res) => {
-  const qs = Object.keys(req.query).length ? '?' + new URLSearchParams(req.query).toString() : '';
-  const targetUrl = `${BACKEND}/api${req.path}${qs}`;
-  try {
-    const response = await axios({
-      method:  req.method,
-      url:     targetUrl,
-      data:    req.method !== 'GET' ? req.body : undefined,
-      headers: { 'content-type': 'application/json' },
-      timeout: 30000,
-    });
-    res.status(response.status).json(response.data);
-  } catch (err) {
-    const status = err.response?.status || 502;
-    const body   = err.response?.data  || { error: 'Backend unavailable', detail: err.message };
-    res.status(status).json(body);
-  }
+// Serve React static files
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// All routes → index.html (React Router)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-// Serve Vite build
-const DIST = path.join(__dirname, 'dist');
-app.use(express.static(DIST));
-
-// SPA fallback — all routes serve index.html
-app.get('*', (_req, res) => {
-  res.sendFile(path.join(DIST, 'index.html'));
-});
-
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🖥️  ClearTrade Frontend on http://localhost:${PORT}`);
-  console.log(`   Backend proxy → ${BACKEND}`);
+  console.log(`Frontend server running on port ${PORT}`);
+  console.log(`Proxying /api/* to: ${BACKEND_URL}`);
 });

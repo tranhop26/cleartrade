@@ -20,9 +20,9 @@ const BACKEND = (process.env.BACKEND_URL || 'http://localhost:3001').replace(/\/
 
 app.use(express.json());
 
-// Proxy /api/* → backend
+// Proxy /api/* → backend (use req.originalUrl to preserve /api prefix)
 app.all('/api/*', async (req, res) => {
-  const targetUrl = `${BACKEND}${req.path}${req.url.includes('?') ? '?' + req.url.split('?')[1] : ''}`;
+  const targetUrl = `${BACKEND}${req.originalUrl}`;
   try {
     const response = await axios({
       method:  req.method,

@@ -1,0 +1,8 @@
+[nodejs]
+version = "20"
+
+[phases.install]
+cmds = ["npm install"]
+
+[start]
+cmd = "node src/index.js"

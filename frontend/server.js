@@ -18,10 +18,11 @@ const app        = express();
 const PORT       = process.env.PORT || 4173;
 const BACKEND    = process.env.BACKEND_URL || 'http://localhost:3001';
 
-// Proxy /api/* to backend
-app.use('/api', createProxyMiddleware({
+// Proxy /api/* to backend — use pathFilter so Express doesn't strip the /api prefix
+app.use(createProxyMiddleware({
   target:       BACKEND,
   changeOrigin: true,
+  pathFilter:   '/api',
   on: {
     error: (err, req, res) => {
       console.error('[Proxy] Error:', err.message);

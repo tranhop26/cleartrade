@@ -1,0 +1,131 @@
+{
+  "cash_usd": 7558.079999999998,
+  "holdings": {
+    "BTC": 0.01757712354746454,
+    "ETH": 0.5570168098747194,
+    "SOL": 4.7793253830045
+  },
+  "trade_history": [
+    {
+      "id": "trade_1782107699554_j8nto",
+      "timestamp": "2026-06-22T05:54:59.554Z",
+      "action": "BUY",
+      "token": "BTC",
+      "amount_usd": 215.83,
+      "price_at_trade": 64121,
+      "reasoning": "[MOCK] BTC is trading at $64121.00 with a 24h change of -0.09%. Portfolio cash: $10000.00. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 4,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": null
+    },
+    {
+      "id": "trade_1782108071013_d4vhq",
+      "timestamp": "2026-06-22T06:01:11.013Z",
+      "action": "BUY",
+      "token": "SOL",
+      "amount_usd": 488.7,
+      "price_at_trade": 73.83,
+      "reasoning": "[MOCK] SOL is trading at $73.83 with a 24h change of 1.16%. Portfolio cash: $9784.17. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 3,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": "0xa028ae354465db0c9fa9f6422fdf36f97baacf9d93ba7950d0155605ec9e317a"
+    },
+    {
+      "id": "trade_1782109155618_zz0ec",
+      "timestamp": "2026-06-22T06:19:15.618Z",
+      "action": "SELL",
+      "token": "SOL",
+      "amount_usd": 258.99,
+      "price_at_trade": 73.96,
+      "reasoning": "[MOCK] SOL is trading at $73.96 with a 24h change of 1.29%. Portfolio cash: $9295.47. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 4,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": "0x2de11698e70b0261fe47393b59b53b90245653970bf7cda2787f079b26768277"
+    },
+    {
+      "id": "trade_1782110900171_pxqht",
+      "timestamp": "2026-06-22T06:48:20.171Z",
+      "action": "HOLD",
+      "token": "ETH",
+      "amount_usd": 0,
+      "price_at_trade": 1732.91,
+      "reasoning": "[MOCK] ETH is trading at $1732.91 with a 24h change of -0.11%. Portfolio cash: $9554.46. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 5,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": "0x50cfcc2595e61f1c755b78b2748e2ea4c8d8a607de1c13a074a9d91f0e239f19"
+    },
+    {
+      "id": "trade_1782110913289_lfsst",
+      "timestamp": "2026-06-22T06:48:33.289Z",
+      "action": "HOLD",
+      "token": "BTC",
+      "amount_usd": 0,
+      "price_at_trade": 63954,
+      "reasoning": "[MOCK] BTC is trading at $63954.00 with a 24h change of -0.43%. Portfolio cash: $9554.46. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 3,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": "0x36778667dead280fcab8b4fa6f9c085cd1a7e736dfbe0ea9d11cab6ac68e8a5b"
+    },
+    {
+      "id": "trade_1782110913718_0ieo7",
+      "timestamp": "2026-06-22T06:48:33.718Z",
+      "action": "BUY",
+      "token": "SOL",
+      "amount_usd": 122.36,
+      "price_at_trade": 73.63,
+      "reasoning": "[MOCK] SOL is trading at $73.63 with a 24h change of 0.55%. Portfolio cash: $9554.46. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 4,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": null
+    },
+    {
+      "id": "trade_1782110917815_jyuly",
+      "timestamp": "2026-06-22T06:48:37.816Z",
+      "action": "BUY",
+      "token": "ETH",
+      "amount_usd": 409.09,
+      "price_at_trade": 1732.91,
+      "reasoning": "[MOCK] ETH is trading at $1732.91 with a 24h change of -0.11%. Portfolio cash: $9432.10. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 6,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": "0xb024642a7315975dd64a639842417e3501a54287e235524a256145692f1a9161"
+    },
+    {
+      "id": "trade_1782111014142_huh4m",
+      "timestamp": "2026-06-22T06:50:14.142Z",
+      "action": "BUY",
+      "token": "BTC",
+      "amount_usd": 372.58,
+      "price_at_trade": 63947,
+      "reasoning": "[MOCK] BTC is trading at $63947.00 with a 24h change of -0.45%. Portfolio cash: $9023.01. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 5,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": "0x8c72f6849f9ecc6b081728051184563c500693fca0abf8427db38705e756f3be"
+    },
+    {
+      "id": "trade_1782111027677_9aydo",
+      "timestamp": "2026-06-22T06:50:27.677Z",
+      "action": "BUY",
+      "token": "ETH",
+      "amount_usd": 556.17,
+      "price_at_trade": 1732.91,
+      "reasoning": "[MOCK] ETH is trading at $1732.91 with a 24h change of -0.11%. Portfolio cash: $8650.43. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 6,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": "0xe88b1d81400087b0d0a3e28ee755cf5c9aa002a2905e20254b4203f9dfc4714e"
+    },
+    {
+      "id": "trade_1782111040579_c6e3j",
+      "timestamp": "2026-06-22T06:50:40.579Z",
+      "action": "BUY",
+      "token": "BTC",
+      "amount_usd": 536.18,
+      "price_at_trade": 63947,
+      "reasoning": "[MOCK] BTC is trading at $63947.00 with a 24h change of -0.45%. Portfolio cash: $8094.26. This is a mock decision for testing — configure COMPUTE_PROVIDER_ADDRESS in .env to enable real AI inference via 0G Compute Network.",
+      "confidence": 3,
+      "reflection": "[MOCK] Previous decisions cannot be evaluated without real AI inference. Configure 0G Compute to enable genuine reflection and learning.",
+      "rootHash": "0x00afc692fd63f989a9e892de88d1769efa37e743c2425df42c654bf01be66f85"
+    }
+  ],
+  "created_at": "2026-06-22T05:25:31.513Z"
+}

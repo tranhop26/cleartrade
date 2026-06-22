@@ -1,0 +1,15 @@
+{
+  "name": "cleartrade",
+  "version": "1.0.0",
+  "description": "ClearTrade — AI Paper Trading Agent on 0G Network",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev:backend": "node backend/src/index.js",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

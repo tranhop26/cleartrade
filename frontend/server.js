@@ -20,9 +20,12 @@ const BACKEND = (process.env.BACKEND_URL || 'http://localhost:3001').replace(/\/
 
 app.use(express.json());
 
-// Proxy /api/* → backend (use req.originalUrl to preserve /api prefix)
+// Proxy /api/* → backend
+// NOTE: req.path is stripped (e.g. /health from /api/health)
+// so we reconstruct the full /api/xxx path manually
 app.all('/api/*', async (req, res) => {
-  const targetUrl = `${BACKEND}${req.originalUrl}`;
+  const qs = Object.keys(req.query).length ? '?' + new URLSearchParams(req.query).toString() : '';
+  const targetUrl = `${BACKEND}/api${req.path}${qs}`;
   try {
     const response = await axios({
       method:  req.method,

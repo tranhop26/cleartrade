@@ -3,33 +3,41 @@
 /**
  * Production server for ClearTrade frontend.
  * Serves Vite build output (dist/) as static files.
- * Proxies /api/* requests to the backend service.
+ * Manually proxies /api/* to backend using axios.
  *
  * Environment variables:
  *   PORT          - port to listen on (default: 4173)
  *   BACKEND_URL   - backend service URL (default: http://localhost:3001)
  */
 
-const express    = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
-const path       = require('path');
+const express = require('express');
+const axios   = require('axios');
+const path    = require('path');
 
-const app        = express();
-const PORT       = process.env.PORT || 4173;
-const BACKEND    = process.env.BACKEND_URL || 'http://localhost:3001';
+const app     = express();
+const PORT    = process.env.PORT || 4173;
+const BACKEND = (process.env.BACKEND_URL || 'http://localhost:3001').replace(/\/$/, '');
 
-// Proxy /api/* to backend — use pathFilter so Express doesn't strip the /api prefix
-app.use(createProxyMiddleware({
-  target:       BACKEND,
-  changeOrigin: true,
-  pathFilter:   '/api',
-  on: {
-    error: (err, req, res) => {
-      console.error('[Proxy] Error:', err.message);
-      res.status(502).json({ error: 'Backend unavailable' });
-    },
-  },
-}));
+app.use(express.json());
+
+// Proxy /api/* → backend
+app.all('/api/*', async (req, res) => {
+  const targetUrl = `${BACKEND}${req.path}${req.url.includes('?') ? '?' + req.url.split('?')[1] : ''}`;
+  try {
+    const response = await axios({
+      method:  req.method,
+      url:     targetUrl,
+      data:    req.method !== 'GET' ? req.body : undefined,
+      headers: { 'content-type': 'application/json' },
+      timeout: 30000,
+    });
+    res.status(response.status).json(response.data);
+  } catch (err) {
+    const status = err.response?.status || 502;
+    const body   = err.response?.data  || { error: 'Backend unavailable', detail: err.message };
+    res.status(status).json(body);
+  }
+});
 
 // Serve Vite build
 const DIST = path.join(__dirname, 'dist');
